@@ -1,0 +1,224 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.Dragon.idle": {
+			"loop": true,
+			"animation_length": 2.8,
+			"bones": {
+				"Body": {
+					"position": [0, "math.cos(query.anim_time * 250) * 0.2", 0]
+				},
+				"leftArm": {
+					"position": [0, "-math.cos(query.anim_time * 250) * 0.2", 0]
+				},
+				"rightArm": {
+					"position": [0, "-math.cos(query.anim_time * 250) * 0.2", 0]
+				},
+				"Neck1": {
+					"rotation": ["math.cos(query.anim_time * 250 + 50) * 0.5", 0, 0]
+				},
+				"Neck2": {
+					"rotation": ["math.cos(query.anim_time * 250 + 100) * 0.5", 0, 0]
+				},
+				"Head": {
+					"rotation": ["math.cos(query.anim_time * 250 - 120) * 1", 0, 0]
+				},
+				"Tail1": {
+					"rotation": ["math.cos(query.anim_time * 250 - 50) * 0.5", 0, "math.cos(query.anim_time * 125) * 1"]
+				},
+				"Tail2": {
+					"rotation": ["math.cos(query.anim_time * 250 - 75) * 0.75", 0, 0]
+				},
+				"Tail3": {
+					"rotation": ["math.cos(query.anim_time * 250 - 100) * 1", 0, "math.cos(query.anim_time * 125 - 50) * 2"]
+				},
+				"Tail4": {
+					"rotation": ["math.cos(query.anim_time * 250 - 150) * 1", 0, "math.cos(query.anim_time * 125 - 75) * 2"]
+				},
+				"Tail5": {
+					"rotation": ["math.cos(query.anim_time * 250 - 175) * 1.5", 0, "math.cos(query.anim_time * 125 - 100) * 3"]
+				},
+				"Tail6": {
+					"rotation": ["math.cos(query.anim_time * 250 - 200) * 2", 0, "math.cos(query.anim_time * 125 - 150) * 4"]
+				},
+				"leftThigh": {
+					"position": [0, "-math.cos(query.anim_time * 250) * 0.2", 0]
+				},
+				"rightThigh": {
+					"position": [0, "-math.cos(query.anim_time * 250) * 0.2", 0]
+				},
+				"rightWingArm": {
+					"rotation": [10, 35, "-17.5+math.cos(query.anim_time * 250 - 70)"],
+					"scale": [0.9, 1, 0.8]
+				},
+				"rightWingFArm": {
+					"rotation": [0, -47.5, 0]
+				},
+				"rightWingFnear": {
+					"rotation": [0, 45, -2.5]
+				},
+				"rightWingFfar": {
+					"rotation": [0, 45, 0]
+				},
+				"leftWingArm": {
+					"rotation": [10, -35, "17.5+math.cos(query.anim_time * 250 - 80) * -1"],
+					"scale": [0.9, 1, 0.8]
+				},
+				"leftWingFArm": {
+					"rotation": [0, 45, 0]
+				},
+				"leftWingFnear": {
+					"rotation": [0, -45, 2.5]
+				},
+				"leftWingFfar": {
+					"rotation": [0, -45, 0]
+				}
+			}
+		},
+		"animation.Dragon.walk": {
+			"loop": true,
+			"animation_length": 1.8,
+			"bones": {
+				"Body": {
+					"position": [0, "math.cos(query.anim_time * 400) * 0.5", 0]
+				},
+				"leftArm": {
+					"rotation": ["math.cos(query.anim_time * 400) * 20", 0, 0]
+				},
+				"rightArm": {
+					"rotation": ["math.cos(query.anim_time * 400) * -20", 0, 0]
+				},
+				"leftThigh": {
+					"rotation": ["math.cos(query.anim_time * 400) * -20", 0, 0]
+				},
+				"rightThigh": {
+					"rotation": ["math.cos(query.anim_time * 400) * 20", 0, 0]
+				},
+				"rightWingArm": {
+					"rotation": [10, 35, "-17.5+math.cos(query.anim_time * 400 - 70) * 2"],
+					"scale": [0.9, 1, 0.8]
+				},
+				"rightWingFArm": {
+					"rotation": [0, -47.5, 0]
+				},
+				"rightWingFnear": {
+					"rotation": [0, 45, -2.5]
+				},
+				"rightWingFfar": {
+					"rotation": [0, 45, 0]
+				},
+				"leftWingArm": {
+					"rotation": [10, -35, "17.5+math.cos(query.anim_time * 400 - 80) * -2"],
+					"scale": [0.9, 1, 0.8]
+				},
+				"leftWingFArm": {
+					"rotation": [0, 45, 0]
+				},
+				"leftWingFnear": {
+					"rotation": [0, -45, 2.5]
+				},
+				"leftWingFfar": {
+					"rotation": [0, -45, 0]
+				}
+			}
+		},
+		"animation.Dragon.sit": {
+			"loop": true,
+			"animation_length": 2.8,
+			"bones": {
+				"Body": {
+					"rotation": [-45, 0, 0],
+					"position": [0, "-6+math.cos(query.anim_time * 250) * 0.2", 0]
+				},
+				"leftArm": {
+					"rotation": [30, 0, 7.5],
+					"position": [0, "-math.cos(query.anim_time * 250) * 0.2", 0]
+				},
+				"rightArm": {
+					"rotation": [32.5, 0, -7.5],
+					"position": [0, "-math.cos(query.anim_time * 250) * 0.2", 0]
+				},
+				"Neck1": {
+					"rotation": ["15+math.cos(query.anim_time * 250 + 50) * 0.5", 0, 0]
+				},
+				"Neck2": {
+					"rotation": ["15+math.cos(query.anim_time * 250 + 100) * 0.5", 0, 0]
+				},
+				"Head": {
+					"rotation": ["12.5+math.cos(query.anim_time * 250 - 120) * 1", 0, 0]
+				},
+				"Tail1": {
+					"rotation": ["40+math.cos(query.anim_time * 250 - 50) * 0.5", 25, "-25+math.cos(query.anim_time * 125) * 1"]
+				},
+				"Tail2": {
+					"rotation": [5, 0, -40]
+				},
+				"Tail3": {
+					"rotation": [7.5, 0, "-25+math.cos(query.anim_time * 125 - 50) * 2"]
+				},
+				"Tail4": {
+					"rotation": ["math.cos(query.anim_time * 250 - 150) * 2", "math.cos(query.anim_time * 125) * 5", "-32.5+math.cos(query.anim_time * 125 - 75) * 2"]
+				},
+				"Tail5": {
+					"rotation": ["math.cos(query.anim_time * 250 - 175) * 3", "math.cos(query.anim_time * 125 - 50) * 10", "-22.5+math.cos(query.anim_time * 125 - 100) * 3"]
+				},
+				"Tail6": {
+					"rotation": ["math.cos(query.anim_time * 250 - 200) * 5", "math.cos(query.anim_time * 125 - 100) * 15", "-10+math.cos(query.anim_time * 125 - 150) * 4"]
+				},
+				"leftThigh": {
+					"rotation": [-37.5, 0, -15],
+					"position": [0, "-math.cos(query.anim_time * 250) * 0.2", 0]
+				},
+				"rightThigh": {
+					"rotation": [-37.5, 0, 15],
+					"position": [0, "-math.cos(query.anim_time * 250) * 0.2", 0]
+				},
+				"rightWingArm": {
+					"rotation": [37.5, 52.5, "17.5+math.cos(query.anim_time * 250 - 70)"],
+					"scale": [0.9, 1, 0.8]
+				},
+				"rightWingFArm": {
+					"rotation": [0, -45, 5]
+				},
+				"rightWingFnear": {
+					"rotation": [0, 45, -2.5]
+				},
+				"rightWingFfar": {
+					"rotation": [0, 45, 0]
+				},
+				"leftWingArm": {
+					"rotation": [60, -52.5, "-24+math.cos(query.anim_time * 250 - 80) * -1"],
+					"scale": [0.9, 1, 0.8]
+				},
+				"leftWingFArm": {
+					"rotation": [0, 45, 0]
+				},
+				"leftWingFnear": {
+					"rotation": [0, -45, 2.5]
+				},
+				"leftWingFfar": {
+					"rotation": [0, -45, 0]
+				},
+				"leftFArm": {
+					"rotation": [15, 0, 0]
+				},
+				"rightFArm": {
+					"rotation": [12.5, 0, 0]
+				},
+				"leftShin": {
+					"position": [0, 6, 0]
+				},
+				"leftFeet": {
+					"rotation": [87.5, 0, 0]
+				},
+				"rightShin": {
+					"position": [0, 6, 0]
+				},
+				"rightFeet": {
+					"rotation": [87.5, 0, 0]
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}
