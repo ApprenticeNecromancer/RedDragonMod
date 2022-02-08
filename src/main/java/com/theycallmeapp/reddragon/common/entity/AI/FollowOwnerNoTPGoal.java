@@ -4,6 +4,7 @@ package com.theycallmeapp.reddragon.common.entity.AI;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.ai.goal.FollowOwnerGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
@@ -99,7 +100,7 @@ public class FollowOwnerNoTPGoal extends Goal {
     public void tick() {
         this.tamable.getLookControl().setLookAt(this.owner, 10.0F, (float)this.tamable.getMaxHeadXRot());
         if (--this.timeToRecalcPath <= 0) {
-            this.timeToRecalcPath = this.m_183277_(10);
+            this.timeToRecalcPath = this.adjustedTickDelay(10);
             if (!this.tamable.isLeashed() && !this.tamable.isPassenger()) {
                 if (this.tamable.distanceToSqr(this.owner) >= 250.0D) {
                     this.navigation.stop();

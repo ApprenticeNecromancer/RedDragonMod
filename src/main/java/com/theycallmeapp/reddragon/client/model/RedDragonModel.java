@@ -3,6 +3,7 @@ package com.theycallmeapp.reddragon.client.model;
 import com.theycallmeapp.reddragon.RedDragonMod;
 import com.theycallmeapp.reddragon.common.entity.RedDragonEntity;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
@@ -73,6 +74,8 @@ public class RedDragonModel extends AnimatedGeoModel<RedDragonEntity> {
             IBone neck1 = this.getAnimationProcessor().getBone("neckcontr1");
             IBone neck2 = this.getAnimationProcessor().getBone("neckcontr2");
 
+            IBone bodyrotx = this.getAnimationProcessor().getBone("BodyRotx");
+
             IBone body = this.getAnimationProcessor().getBone("Body");
             IBone babybody = this.getAnimationProcessor().getBone("bodyB");
 
@@ -90,7 +93,8 @@ public class RedDragonModel extends AnimatedGeoModel<RedDragonEntity> {
             neck2.setRotationX(extraData.headPitch * ((float) Math.PI / 180F) / 3);
             neck2.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F) / 3);
 
-//            tail.setRotationX(entity.getXRot() * 100);
+//            bodyrotx.setRotationX(extraData.headPitch * ((float) Math.PI / 110F));
+//            bodyrotx.setRotationX(Mth.lerp(customPredicate.getPartialTick(), extraData.headPitch, extraData.headPitch) / 40);
 
             body.setHidden(false);
             babybody.setHidden(true);
