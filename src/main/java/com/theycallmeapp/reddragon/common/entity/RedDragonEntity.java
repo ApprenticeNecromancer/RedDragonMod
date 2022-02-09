@@ -20,6 +20,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -28,6 +29,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -48,7 +51,7 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
 
 
-        if (this.xRotO < 0 && this.xRotO > -20) {
+        if (this.xRotO < 0 && this.xRotO > -20 && isFlying()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.fly", true));
             return PlayState.CONTINUE;
         }
@@ -335,6 +338,19 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         return this.getFirstPassenger();
     }
 
+    @OnlyIn(Dist.CLIENT)
+    public void updateClientControls() {
+
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if(getControllingPassenger() != null) {
+            this.setIsFlying(true); // temporary, we need to set when an entity isFlying() or not, for now let's set this to true when a pilot is present due to lack of a liftoff method.
+        }
+    }
+
     @Override
     public void travel(Vec3 pTravelVector) {
         if (this.isAlive()) {
@@ -365,13 +381,15 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
 
                 double xHeadRotABS = Math.abs(this.xRotO) / 450;
 
-
                     Vec3 delta = this.getDeltaMovement();
                     this.setDeltaMovement(delta.x, delta.y / 2, delta.z);
                     if (f1 > 0.0F) {
                         float f2 = Mth.sin(this.getYRot() * ((float)Math.PI / 180F));
                         float f3 = Mth.cos(this.getYRot() * ((float)Math.PI / 180F));
-                        this.setDeltaMovement(this.getDeltaMovement().add((double)((-0.2F + xHeadRotABS) * f2), xHeadRot *-0.05, (double)((0.2F - xHeadRotABS) * f3)));
+                        this.setDeltaMovement(this.getDeltaMovement().add((double)((
+                                -0.2F + xHeadRotABS) * f2),
+                                isFlying() ? xHeadRot *-0.05 : 0,
+                                (double)((0.2F - xHeadRotABS) * f3)));
                     }
 
                 if(this.isControlledByLocalInstance()) {
