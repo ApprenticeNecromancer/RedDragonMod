@@ -1,0 +1,201 @@
+---- Minecraft Crash Report ----
+// You should try our sister game, Minceraft!
+
+Time: 2/11/22, 4:19 AM
+Description: Ticking entity
+
+java.lang.IllegalArgumentException: Invalid message com.theycallmeapp.reddragon.common.entity.network.message.ControlMessageGoingDown
+	at net.minecraftforge.network.simple.IndexedMessageCodec.build(IndexedMessageCodec.java:145) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2376%2382!:?] {re:classloading}
+	at net.minecraftforge.network.simple.SimpleChannel.encodeMessage(SimpleChannel.java:87) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2376%2382!:?] {re:classloading}
+	at net.minecraftforge.network.simple.SimpleChannel.toBuffer(SimpleChannel.java:100) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2376%2382!:?] {re:classloading}
+	at net.minecraftforge.network.simple.SimpleChannel.toVanillaPacket(SimpleChannel.java:131) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2376%2382!:?] {re:classloading}
+	at net.minecraftforge.network.simple.SimpleChannel.sendTo(SimpleChannel.java:111) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2376%2382!:?] {re:classloading}
+	at net.minecraftforge.network.simple.SimpleChannel.sendToServer(SimpleChannel.java:106) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2376%2382!:?] {re:classloading}
+	at com.theycallmeapp.reddragon.common.entity.RedDragonEntity.updateClientControls(RedDragonEntity.java:380) ~[%2381!:?] {re:classloading}
+	at com.theycallmeapp.reddragon.common.entity.RedDragonEntity.tick(RedDragonEntity.java:395) ~[%2381!:?] {re:classloading}
+	at net.minecraft.client.multiplayer.ClientLevel.tickNonPassenger(ClientLevel.java:228) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.world.level.Level.guardEntityTick(Level.java:524) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.multiplayer.ClientLevel.lambda$tickEntities$4(ClientLevel.java:210) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:54) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading}
+	at net.minecraft.client.multiplayer.ClientLevel.tickEntities(ClientLevel.java:208) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.tick(Minecraft.java:1721) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1041) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:665) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:205) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.lambda$launchService$0(ForgeClientUserdevLaunchHandler.java:38) ~[fmlloader-1.18.1-39.0.3.jar%230!:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:37) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:106) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:77) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:90) [bootstraplauncher-0.1.17.jar:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at net.minecraftforge.network.simple.IndexedMessageCodec.build(IndexedMessageCodec.java:145) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2376%2382!:?] {re:classloading}
+	at net.minecraftforge.network.simple.SimpleChannel.encodeMessage(SimpleChannel.java:87) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2376%2382!:?] {re:classloading}
+	at net.minecraftforge.network.simple.SimpleChannel.toBuffer(SimpleChannel.java:100) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2376%2382!:?] {re:classloading}
+	at net.minecraftforge.network.simple.SimpleChannel.toVanillaPacket(SimpleChannel.java:131) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2376%2382!:?] {re:classloading}
+	at net.minecraftforge.network.simple.SimpleChannel.sendTo(SimpleChannel.java:111) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2376%2382!:?] {re:classloading}
+	at net.minecraftforge.network.simple.SimpleChannel.sendToServer(SimpleChannel.java:106) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2376%2382!:?] {re:classloading}
+	at com.theycallmeapp.reddragon.common.entity.RedDragonEntity.updateClientControls(RedDragonEntity.java:380) ~[%2381!:?] {re:classloading}
+	at com.theycallmeapp.reddragon.common.entity.RedDragonEntity.tick(RedDragonEntity.java:395) ~[%2381!:?] {re:classloading}
+	at net.minecraft.client.multiplayer.ClientLevel.tickNonPassenger(ClientLevel.java:228) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.world.level.Level.guardEntityTick(Level.java:524) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.multiplayer.ClientLevel.lambda$tickEntities$4(ClientLevel.java:210) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:54) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading}
+	at net.minecraft.client.multiplayer.ClientLevel.tickEntities(ClientLevel.java:208) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+-- Entity being ticked --
+Details:
+	Entity Type: reddragon:red_dragon (com.theycallmeapp.reddragon.common.entity.RedDragonEntity)
+	Entity ID: 56
+	Entity Name: entity.reddragon.red_dragon
+	Entity's Exact location: 339.55, 66.00, 315.49
+	Entity's Block location: World: (339,66,315), Section: (at 3,2,11 in 21,4,19; chunk contains blocks 336,-64,304 to 351,319,319), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,-64,0 to 511,319,511)
+	Entity's Momentum: 0.00, 0.00, 0.00
+	Entity's Passengers: [LocalPlayer['Dev'/55, l='ClientLevel', x=339.55, y=67.50, z=315.49]]
+	Entity's Vehicle: null
+Stacktrace:
+	at net.minecraft.world.level.Level.guardEntityTick(Level.java:524) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.multiplayer.ClientLevel.lambda$tickEntities$4(ClientLevel.java:210) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:54) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading}
+	at net.minecraft.client.multiplayer.ClientLevel.tickEntities(ClientLevel.java:208) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.tick(Minecraft.java:1721) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1041) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:665) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:205) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.lambda$launchService$0(ForgeClientUserdevLaunchHandler.java:38) ~[fmlloader-1.18.1-39.0.3.jar%230!:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:37) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:106) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:77) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:90) [bootstraplauncher-0.1.17.jar:?] {}
+
+
+-- Affected level --
+Details:
+	All players: 1 total; [LocalPlayer['Dev'/55, l='ClientLevel', x=339.55, y=67.50, z=315.49]]
+	Chunk stats: 2025, 1393
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (-64,73,80), Section: (at 0,9,0 in -4,4,5; chunk contains blocks -64,-64,80 to -49,319,95), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,-64,0 to -1,319,511)
+	Level time: 57761 game time, 15711 day time
+	Server brand: forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.ClientLevel.fillReportDetails(ClientLevel.java:422) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.fillReport(Minecraft.java:2311) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:682) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:205) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.lambda$launchService$0(ForgeClientUserdevLaunchHandler.java:38) ~[fmlloader-1.18.1-39.0.3.jar%230!:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:37) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:106) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:77) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-9.0.24.jar%2310!:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:90) [bootstraplauncher-0.1.17.jar:?] {}
+
+
+-- Last reload --
+Details:
+	Reload number: 1
+	Reload reason: initial
+	Finished: Yes
+	Packs: Default, Mod Resources
+
+-- System Details --
+Details:
+	Minecraft Version: 1.18.1
+	Minecraft Version ID: 1.18.1
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 17.0.1, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Adoptium
+	Memory: 965595344 bytes (920 MiB) / 2877292544 bytes (2744 MiB) up to 4282384384 bytes (4084 MiB)
+	CPUs: 6
+	Processor Vendor: AuthenticAMD
+	Processor Name: AMD Ryzen 5 3500X 6-Core Processor             
+	Identifier: AuthenticAMD Family 23 Model 113 Stepping 0
+	Microarchitecture: Zen 2
+	Frequency (GHz): 3.59
+	Number of physical packages: 1
+	Number of physical CPUs: 6
+	Number of logical CPUs: 6
+	Graphics card #0 name: NVIDIA GeForce GTX 1650
+	Graphics card #0 vendor: NVIDIA (0x10de)
+	Graphics card #0 VRAM (MB): 4095.00
+	Graphics card #0 deviceId: 0x2188
+	Graphics card #0 versionInfo: DriverVersion=30.0.14.9729
+	Memory slot #0 capacity (MB): 8192.00
+	Memory slot #0 clockSpeed (GHz): 2.67
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MB): 8192.00
+	Memory slot #1 clockSpeed (GHz): 2.67
+	Memory slot #1 type: DDR4
+	Virtual memory max (MB): 17705.18
+	Virtual memory used (MB): 15941.36
+	Swap memory total (MB): 1372.48
+	Swap memory used (MB): 573.13
+	JVM Flags: 1 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	Launched Version: MOD_DEV
+	Backend library: LWJGL version 3.2.2 SNAPSHOT
+	Backend API: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 3.2.0 NVIDIA 497.29, NVIDIA Corporation
+	Window size: 854x480
+	GL Caps: Using framebuffer using OpenGL 3.2
+	GL debug messages: 
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'forge'; Server brand changed to 'forge'
+	Type: Integrated Server (map_client.txt)
+	Graphics mode: fancy
+	Resource Packs: 
+	Current Language: English (US)
+	CPU: 6x AMD Ryzen 5 3500X 6-Core Processor 
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Dev'/55, l='ServerLevel[New World]', x=339.55, y=67.50, z=315.49]]
+	Data Packs: vanilla, mod:forge, mod:geckolib3 (incompatible), mod:reddragon
+	ModLauncher: 9.0.24+9.0.24+main.7be9f01d
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		 mixin PLUGINSERVICE 
+		 eventbus PLUGINSERVICE 
+		 object_holder_definalize PLUGINSERVICE 
+		 runtime_enum_extender PLUGINSERVICE 
+		 capability_token_subclass PLUGINSERVICE 
+		 accesstransformer PLUGINSERVICE 
+		 runtimedistcleaner PLUGINSERVICE 
+		 mixin TRANSFORMATIONSERVICE 
+		 fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		minecraft@1.0
+		javafml@null
+	Mod List: 
+		forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.|Minecraft                     |minecraft                     |1.18.1              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		                                                  |Forge                         |forge                         |39.0.3              |DONE      |Manifest: NOSIGNATURE
+		geckolib-1.18-forge-3.0.3_mapped_parchment_2022.01|GeckoLib                      |geckolib3                     |3.0.3               |DONE      |Manifest: NOSIGNATURE
+		main                                              |Red Dragon                    |reddragon                     |1.0                 |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: a25c7ae0-eda3-4cd6-a2d3-922a72930892
+	FML: 39.0
+	Forge: net.minecraftforge:39.0.3

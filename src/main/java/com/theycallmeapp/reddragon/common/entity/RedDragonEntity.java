@@ -1,7 +1,12 @@
 package com.theycallmeapp.reddragon.common.entity;
 
 import com.theycallmeapp.reddragon.common.entity.AI.FollowOwnerNoTPGoal;
+import com.theycallmeapp.reddragon.common.entity.network.ControlNetwork;
+import com.theycallmeapp.reddragon.common.entity.network.message.ControlMessageGoingDown;
+import com.theycallmeapp.reddragon.common.entity.network.message.ControlMessageJumping;
 import com.theycallmeapp.reddragon.init.EntityInit;
+import com.theycallmeapp.reddragon.init.KeyBindsInit;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -14,14 +19,11 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
-import net.minecraft.world.entity.animal.horse.AbstractHorse;
-import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -43,33 +45,34 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 public class RedDragonEntity extends TamableAnimal implements IAnimatable, PlayerRideable {
 
     private static final EntityDataAccessor<Boolean> IS_FLYING = SynchedEntityData.defineId(RedDragonEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_JUMPING = SynchedEntityData.defineId(RedDragonEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_GOINDOWN = SynchedEntityData.defineId(RedDragonEntity.class, EntityDataSerializers.BOOLEAN);
 
     AnimationFactory factory = new AnimationFactory(this);
-
     Player pilot;
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-
-
-        if (this.xRotO < 0 && this.xRotO > -20 && isFlying()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.fly", true));
-            return PlayState.CONTINUE;
-        }
-        if (this.xRotO > 0 && this.xRotO < 20) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.glide", true));
-            return PlayState.CONTINUE;
-        }
-        if (this.xRotO > 15 && this.xRotO < 30) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.glidedown", true));
-            return PlayState.CONTINUE;
-        }
-        if (this.xRotO > 30) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.dive", true));
-            return PlayState.CONTINUE;
-        }
-        if (this.xRotO < -20) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.flyup", true));
-            return PlayState.CONTINUE;
+        if (isFlying()) {
+            if (this.xRotO < 0 && this.xRotO > -20 || isJumping()) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.fly", true));
+                return PlayState.CONTINUE;
+            }
+            if (this.xRotO > 0 && this.xRotO < 20) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.glide", true));
+                return PlayState.CONTINUE;
+            }
+            if (this.xRotO > 15 && this.xRotO < 30) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.glidedown", true));
+                return PlayState.CONTINUE;
+            }
+            if (this.xRotO > 30) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.dive", true));
+                return PlayState.CONTINUE;
+            }
+            if (this.xRotO < -20 || isJumping()) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.flyup", true));
+                return PlayState.CONTINUE;
+            }
         }
         if (this.isInSittingPose()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.sit", true));
@@ -84,25 +87,27 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
     }
 
     private <E extends IAnimatable> PlayState predicate1(AnimationEvent<E> event) {
-        if (this.xRotO < 0 && this.xRotO > -20) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rotmidup", true));
-            return PlayState.CONTINUE;
-        }
-        if (this.xRotO > 0 && this.xRotO < 20) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rot0", true));
-            return PlayState.CONTINUE;
-        }
-        if (this.xRotO > 15 && this.xRotO < 30) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rotdive", true));
-            return PlayState.CONTINUE;
-        }
-        if (this.xRotO > 30) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rotdive2", true));
-            return PlayState.CONTINUE;
-        }
-        if (this.xRotO < -20) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rotup", true));
-            return PlayState.CONTINUE;
+        if (isFlying()) {
+            if (this.xRotO < 0 && this.xRotO > -20) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rotmidup", true));
+                return PlayState.CONTINUE;
+            }
+            if (this.xRotO > 0 && this.xRotO < 20) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rot0", true));
+                return PlayState.CONTINUE;
+            }
+            if (this.xRotO > 15 && this.xRotO < 30) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rotdive", true));
+                return PlayState.CONTINUE;
+            }
+            if (this.xRotO > 30) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rotdive2", true));
+                return PlayState.CONTINUE;
+            }
+            if (this.xRotO < -20 || isJumping()) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rotup", true));
+                return PlayState.CONTINUE;
+            }
         }
         return PlayState.CONTINUE;
     }
@@ -167,6 +172,22 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         this.entityData.set(IS_FLYING, flying);
     }
 
+    public boolean isJumping() {
+        return this.entityData.get(IS_JUMPING);
+    }
+
+    public void setIsJumping(boolean jumping) {
+        this.entityData.set(IS_JUMPING, jumping);
+    }
+
+    public boolean isGoingDown() {
+        return this.entityData.get(IS_GOINDOWN);
+    }
+
+    public void setIsGoingDown(boolean goingdown) {
+        this.entityData.set(IS_GOINDOWN, goingdown);
+    }
+
     public void setDragonOverlay(int pType) {
         this.entityData.set(DRAGON_OVERLAY, pType);
     }
@@ -176,6 +197,8 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         this.entityData.define(DRAGON_VARIANT, 0);
         this.entityData.define(DRAGON_OVERLAY, 0);
         this.entityData.define(IS_FLYING, false);
+        this.entityData.define(IS_JUMPING, false);
+        this.entityData.define(IS_GOINDOWN, false);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
@@ -183,6 +206,8 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         pCompound.putInt("variant", this.getDragonVariant());
         pCompound.putInt("overlay", this.getDragonOverlay());
         pCompound.putBoolean("is_flying", this.isFlying());
+        pCompound.putBoolean("is_jumping", this.isJumping());
+        pCompound.putBoolean("is_goingdown", this.isGoingDown());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
@@ -190,6 +215,8 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         this.setDragonVariant(pCompound.getInt("variant"));
         this.setDragonOverlay(pCompound.getInt("overlay"));
         this.setIsFlying(pCompound.getBoolean("is_flying"));
+        this.setIsJumping(pCompound.getBoolean("is_jumping"));
+        this.setIsGoingDown(pCompound.getBoolean("is_goingdown"));
     }
 
     //  Taming
@@ -297,7 +324,7 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
      * @return solidBlockState
      */
     public boolean isOnGround() {
-        for (int xz = 0; xz <= 2; xz++) {
+        for (int xz = 0; xz <= 1; xz++) {
             BlockPos solidPos = new BlockPos(this.getX() - xz, this.getY() - xz, this.getZ() - xz);
             this.level.getBlockState(solidPos).getMaterial().isSolid();
         }
@@ -313,6 +340,7 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         }
 
     }
+
     public void positionRider(Entity pPassenger) {
         super.positionRider(pPassenger);
         if (pPassenger == this.getControllingPassenger()) {
@@ -340,22 +368,40 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
 
     @OnlyIn(Dist.CLIENT)
     public void updateClientControls() {
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.options.keyJump.isDown()) {
+            ControlNetwork.INSTANCE.sendToServer(new ControlMessageJumping(true));
+        } else {
+            ControlNetwork.INSTANCE.sendToServer(new ControlMessageJumping(false));
+        }
+        if (KeyBindsInit.keyDown.isDown()) {
+            ControlNetwork.INSTANCE.sendToServer(new ControlMessageGoingDown(true));
+        } else {
+            ControlNetwork.INSTANCE.sendToServer(new ControlMessageGoingDown(false));
+        }
+        System.out.println(this.isGoingDown() + " Down ");
+        System.out.println(KeyBindsInit.keyDown.isDown() + " key down");
 
     }
 
     @Override
     public void tick() {
-        super.tick();
-        if(getControllingPassenger() != null) {
-            this.setIsFlying(true); // temporary, we need to set when an entity isFlying() or not, for now let's set this to true when a pilot is present due to lack of a liftoff method.
+        if (getControllingPassenger() != null) { // !isOnGround()
+            this.setIsFlying(true); // temporary, we need to set when an entity isFlying() or not, for now let's set this to true when a pilot is present, due to lack of a liftoff method.
         }
+
+        this.setNoGravity(this.isFlying());
+        if (level.isClientSide()) {
+            updateClientControls();
+        }
+        super.tick();
     }
 
     @Override
     public void travel(Vec3 pTravelVector) {
         if (this.isAlive()) {
             if (this.isVehicle() && this.canBeControlledByRider()) {
-                LivingEntity pilot = (LivingEntity)this.getControllingPassenger();
+                LivingEntity pilot = (LivingEntity) this.getControllingPassenger();
 
                 this.setYRot(pilot.getYRot());
                 this.yRotO = this.getYRot();
@@ -365,36 +411,44 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
                 this.yHeadRot = this.yBodyRot;
                 float f = pilot.xxa * 0.5F;
                 float f1 = pilot.zza;
-                if (f1 <= 0.0F) {
-                    f1 *= 0.25F;
-                }
 
-                this.xRotO = this.getXRot();
                 double xHeadRot;
-
-                if (this.xRotO > 0){
+                if (this.xRotO > 0) {
                     xHeadRot = this.xRotO / 2;
-
                 } else {
                     xHeadRot = this.xRotO / 3.6;
                 }
 
                 double xHeadRotABS = Math.abs(this.xRotO) / 450;
+                double y = isFlying() && (!isJumping() || isGoingDown()) ? xHeadRot * -0.05 : 0;
+                if (f1 <= 0.0F) {
+                    f1 *= 0.25F;
+                }
 
-                    Vec3 delta = this.getDeltaMovement();
-                    this.setDeltaMovement(delta.x, delta.y / 2, delta.z);
-                    if (f1 > 0.0F) {
-                        float f2 = Mth.sin(this.getYRot() * ((float)Math.PI / 180F));
-                        float f3 = Mth.cos(this.getYRot() * ((float)Math.PI / 180F));
-                        this.setDeltaMovement(this.getDeltaMovement().add((double)((
-                                -0.2F + xHeadRotABS) * f2),
-                                isFlying() ? xHeadRot *-0.05 : 0,
-                                (double)((0.2F - xHeadRotABS) * f3)));
-                    }
+                this.xRotO = this.getXRot();
 
-                if(this.isControlledByLocalInstance()) {
+                Vec3 delta = this.getDeltaMovement();
+                this.setDeltaMovement(delta.x / 1.2, delta.y / 2, delta.z / 1.2);
+
+                if (f1 > 0.0F) {
+                    float f2 = Mth.sin(this.getYRot() * ((float) Math.PI / 180F));
+                    float f3 = Mth.cos(this.getYRot() * ((float) Math.PI / 180F));
+
+                    this.setDeltaMovement(delta.add(
+                            ((-0.2F + xHeadRotABS) * f2),
+                            y, // if isFlying( allow y changes if not set to 0);
+                            (0.2F - xHeadRotABS) * f3));
+                }
+
+                if (this.isJumping()) {
+                    this.setDeltaMovement(this.getDeltaMovement().add(0, f1 > 0 ? 0.3 : 1, 0));
+                } else if(this.isGoingDown()) {
+                    this.setDeltaMovement(this.getDeltaMovement().add(0, f1 > 0 ? -0.3 : -1, 0));
+                }
+
+                if (this.isControlledByLocalInstance()) {
                     this.setSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED));
-                    super.travel(new Vec3((double)f, pTravelVector.y, (double)f1));
+                    super.travel(new Vec3(f, y, f1)); // pTravelVector.y
                 } else if (pilot instanceof Player) {
                     this.setDeltaMovement(Vec3.ZERO);
                 }
@@ -412,4 +466,5 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
     public void setPilot(Player pilot) {
         this.pilot = pilot;
     }
+
 }

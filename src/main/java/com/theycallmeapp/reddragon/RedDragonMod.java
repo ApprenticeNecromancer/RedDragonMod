@@ -1,5 +1,6 @@
 package com.theycallmeapp.reddragon;
 
+import com.theycallmeapp.reddragon.common.entity.network.ControlNetwork;
 import com.theycallmeapp.reddragon.init.EntityInit;
 import com.theycallmeapp.reddragon.init.ItemInit;
 import net.minecraft.world.level.block.Blocks;
@@ -34,11 +35,14 @@ public class RedDragonMod
         GeckoLib.initialize();
     }
 
+
+
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        ControlNetwork.init();
     }
 
 }

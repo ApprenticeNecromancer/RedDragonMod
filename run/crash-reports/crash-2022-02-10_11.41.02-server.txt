@@ -1,0 +1,117 @@
+---- Minecraft Crash Report ----
+// You're mean.
+
+Time: 2/10/22, 11:41 AM
+Description: Exception ticking world
+
+java.lang.NullPointerException: Cannot invoke "it.unimi.dsi.fastutil.ints.IntArrayList.getInt(int)" because "this.wrapped" is null
+	at it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap$MapIterator.nextEntry(Int2ObjectOpenHashMap.java:703) ~[fastutil-8.5.6.jar%2348!:?] {}
+	at it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap$ValueIterator.next(Int2ObjectOpenHashMap.java:1202) ~[fastutil-8.5.6.jar%2348!:?] {}
+	at net.minecraft.server.level.ChunkMap.tick(ChunkMap.java:1106) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading}
+	at net.minecraft.server.level.ServerChunkCache.tickChunks(ServerChunkCache.java:385) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.level.ServerChunkCache.tick(ServerChunkCache.java:321) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:281) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:899) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:839) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:92) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:687) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:259) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:833) [?:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap$MapIterator.nextEntry(Int2ObjectOpenHashMap.java:703) ~[fastutil-8.5.6.jar%2348!:?] {}
+	at it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap$ValueIterator.next(Int2ObjectOpenHashMap.java:1202) ~[fastutil-8.5.6.jar%2348!:?] {}
+	at net.minecraft.server.level.ChunkMap.tick(ChunkMap.java:1106) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading}
+	at net.minecraft.server.level.ServerChunkCache.tickChunks(ServerChunkCache.java:385) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.level.ServerChunkCache.tick(ServerChunkCache.java:321) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:281) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+-- Affected level --
+Details:
+	All players: 1 total; [ServerPlayer['Dev'/68, l='ServerLevel[New World]', x=304.42, y=108.38, z=64.36]]
+	Chunk stats: 4130
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (-64,73,80), Section: (at 0,9,0 in -4,4,5; chunk contains blocks -64,-64,80 to -49,319,95), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,-64,0 to -1,319,511)
+	Level time: 11052 game time, 11052 day time
+	Level name: New World
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+	Level weather: Rain time: 16293 (now: false), thunder time: 71502 (now: false)
+	Known server brands: forge
+	Level was modded: true
+	Level storage version: 0x04ABD - Anvil
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:899) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:839) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:92) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:687) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:259) ~[forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.18.1-recomp.jar%2377!:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:833) [?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.18.1
+	Minecraft Version ID: 1.18.1
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 17.0.1, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Adoptium
+	Memory: 1351612416 bytes (1288 MiB) / 3409969152 bytes (3252 MiB) up to 4282384384 bytes (4084 MiB)
+	CPUs: 6
+	Processor Vendor: AuthenticAMD
+	Processor Name: AMD Ryzen 5 3500X 6-Core Processor             
+	Identifier: AuthenticAMD Family 23 Model 113 Stepping 0
+	Microarchitecture: Zen 2
+	Frequency (GHz): 3.59
+	Number of physical packages: 1
+	Number of physical CPUs: 6
+	Number of logical CPUs: 6
+	Graphics card #0 name: NVIDIA GeForce GTX 1650
+	Graphics card #0 vendor: NVIDIA (0x10de)
+	Graphics card #0 VRAM (MB): 4095.00
+	Graphics card #0 deviceId: 0x2188
+	Graphics card #0 versionInfo: DriverVersion=30.0.14.9729
+	Memory slot #0 capacity (MB): 8192.00
+	Memory slot #0 clockSpeed (GHz): 2.67
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MB): 8192.00
+	Memory slot #1 clockSpeed (GHz): 2.67
+	Memory slot #1 type: DDR4
+	Virtual memory max (MB): 18040.63
+	Virtual memory used (MB): 16460.51
+	Swap memory total (MB): 1707.93
+	Swap memory used (MB): 320.36
+	JVM Flags: 1 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Dev'/68, l='ServerLevel[New World]', x=304.42, y=108.38, z=64.36]]
+	Data Packs: vanilla, mod:forge, mod:geckolib3 (incompatible), mod:reddragon
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'forge'; Server brand changed to 'forge'
+	ModLauncher: 9.0.24+9.0.24+main.7be9f01d
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		 mixin PLUGINSERVICE 
+		 eventbus PLUGINSERVICE 
+		 object_holder_definalize PLUGINSERVICE 
+		 runtime_enum_extender PLUGINSERVICE 
+		 capability_token_subclass PLUGINSERVICE 
+		 accesstransformer PLUGINSERVICE 
+		 runtimedistcleaner PLUGINSERVICE 
+		 mixin TRANSFORMATIONSERVICE 
+		 fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		minecraft@1.0
+		javafml@null
+	Mod List: 
+		forge-1.18.1-39.0.3_mapped_parchment_2022.01.23-1.|Minecraft                     |minecraft                     |1.18.1              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		                                                  |Forge                         |forge                         |39.0.3              |DONE      |Manifest: NOSIGNATURE
+		geckolib-1.18-forge-3.0.3_mapped_parchment_2022.01|GeckoLib                      |geckolib3                     |3.0.3               |DONE      |Manifest: NOSIGNATURE
+		main                                              |Red Dragon                    |reddragon                     |1.0                 |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: 7cf44cfb-a2f1-4a63-9bfb-d831a9930ba2
+	FML: 39.0
+	Forge: net.minecraftforge:39.0.3
