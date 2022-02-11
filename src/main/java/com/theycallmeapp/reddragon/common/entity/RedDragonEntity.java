@@ -324,11 +324,8 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
      * @return solidBlockState
      */
     public boolean isOnGround() {
-        for (int xz = 0; xz <= 1; xz++) {
-            BlockPos solidPos = new BlockPos(this.getX() - xz, this.getY() - xz, this.getZ() - xz);
-            this.level.getBlockState(solidPos).getMaterial().isSolid();
-        }
-        return false;
+        BlockPos solidPos = new BlockPos(this.position().x, this.position().y - 3, this.position().z);
+        return level.getBlockState(solidPos).getMaterial().isSolid();
     }
 
     protected void doPlayerRide(Player pPlayer) {
@@ -379,18 +376,22 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         } else {
             ControlNetwork.INSTANCE.sendToServer(new ControlMessageGoingDown(false));
         }
-        System.out.println(this.isGoingDown() + " Down ");
-        System.out.println(KeyBindsInit.keyDown.isDown() + " key down");
+//        System.out.println(this.isGoingDown() + " Down ");
+//        System.out.println(KeyBindsInit.keyDown.isDown() + " key down");
 
     }
 
     @Override
     public void tick() {
-        if (getControllingPassenger() != null) { // !isOnGround()
+        if (getControllingPassenger() != null && !isOnGround()) { // !isOnGround()
             this.setIsFlying(true); // temporary, we need to set when an entity isFlying() or not, for now let's set this to true when a pilot is present, due to lack of a liftoff method.
+        } else {
+            this.setIsFlying(false);
         }
 
+//        System.out.println(this.isOnGround());
         this.setNoGravity(this.isFlying());
+
         if (level.isClientSide()) {
             updateClientControls();
         }
@@ -412,6 +413,8 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
                 float f = pilot.xxa * 0.5F;
                 float f1 = pilot.zza;
 
+                // facing straight up is -10
+
                 double xHeadRot;
                 if (this.xRotO > 0) {
                     xHeadRot = this.xRotO / 2;
@@ -419,8 +422,17 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
                     xHeadRot = this.xRotO / 3.6;
                 }
 
+                // debug head rot; find value, then increment when facing straight down else reduce effect when trying to look on the ground
+                // reduce isJumping speed when facing straight up ()
+
+                // facing up:
+                // facing down: xHeadRot =
+                // facing forward
+
                 double xHeadRotABS = Math.abs(this.xRotO) / 450;
-                double y = isFlying() && (!isJumping() || isGoingDown()) ? xHeadRot * -0.05 : 0;
+                double y = isFlying() && (!isJumping() || !isGoingDown()) ? xHeadRot * -0.005 : 0;
+                // up: y=0.1 down: y=-0.1 neutral: y=-0.01
+                // facing positive z: x Head Rot 0.4
                 if (f1 <= 0.0F) {
                     f1 *= 0.25F;
                 }
@@ -441,9 +453,9 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
                 }
 
                 if (this.isJumping()) {
-                    this.setDeltaMovement(this.getDeltaMovement().add(0, f1 > 0 ? 0.3 : 1, 0));
-                } else if(this.isGoingDown()) {
-                    this.setDeltaMovement(this.getDeltaMovement().add(0, f1 > 0 ? -0.3 : -1, 0));
+                    this.setDeltaMovement(this.getDeltaMovement().add(0, f1 > 0 ? 0.3 : 0.6, 0));
+                } else if (this.isGoingDown()) {
+                    this.setDeltaMovement(this.getDeltaMovement().add(0, f1 > 0 ? -0.3 : -0.6, 0));
                 }
 
                 if (this.isControlledByLocalInstance()) {

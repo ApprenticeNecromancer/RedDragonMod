@@ -1,0 +1,4 @@
+src
+run
+build.gradle
+gradlew genIntellijRuns
