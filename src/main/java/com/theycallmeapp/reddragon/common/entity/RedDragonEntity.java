@@ -53,6 +53,10 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (isFlying()) {
+            if (this.xRotO < -20 || isJumping()) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.flyup", true));
+                return PlayState.CONTINUE;
+            }
             if (this.xRotO < 0 && this.xRotO > -20 || isJumping()) {
                 event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.fly", true));
                 return PlayState.CONTINUE;
@@ -67,10 +71,6 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
             }
             if (this.xRotO > 30) {
                 event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.dive", true));
-                return PlayState.CONTINUE;
-            }
-            if (this.xRotO < -20 || isJumping()) {
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.flyup", true));
                 return PlayState.CONTINUE;
             }
         }
@@ -406,7 +406,12 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
 
                 this.setYRot(pilot.getYRot());
                 this.yRotO = this.getYRot();
-                this.setXRot(pilot.getXRot() * 0.5F);
+//                this.setXRot(pilot.getXRot() * 0.5F);
+                if (isFlying()) {
+                    this.setXRot(pilot.getXRot() * 0.5F);
+                } else {
+                    this.setXRot(0);
+                }
                 this.setRot(this.getYRot(), this.getXRot());
                 this.yBodyRot = this.getYRot();
                 this.yHeadRot = this.yBodyRot;
@@ -414,7 +419,6 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
                 float f1 = pilot.zza;
 
                 // facing straight up is -10
-
                 double xHeadRot;
                 if (this.xRotO > 0) {
                     xHeadRot = this.xRotO / 2;
@@ -428,7 +432,6 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
                 // facing up:
                 // facing down: xHeadRot =
                 // facing forward
-
                 double xHeadRotABS = Math.abs(this.xRotO) / 450;
                 double y = isFlying() && (!isJumping() || !isGoingDown()) ? xHeadRot * -0.005 : 0;
                 // up: y=0.1 down: y=-0.1 neutral: y=-0.01
@@ -440,7 +443,7 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
                 this.xRotO = this.getXRot();
 
                 Vec3 delta = this.getDeltaMovement();
-                this.setDeltaMovement(delta.x / 1.2, delta.y / 2, delta.z / 1.2);
+                this.setDeltaMovement(delta.x / 2, delta.y / 2, delta.z / 2);
 
                 if (f1 > 0.0F) {
                     float f2 = Mth.sin(this.getYRot() * ((float) Math.PI / 180F));
@@ -453,9 +456,9 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
                 }
 
                 if (this.isJumping()) {
-                    this.setDeltaMovement(this.getDeltaMovement().add(0, f1 > 0 ? 0.3 : 0.6, 0));
+                    this.setDeltaMovement(this.getDeltaMovement().add(0, f1 > 0 ? 0.3 : 0.3, 0));
                 } else if (this.isGoingDown()) {
-                    this.setDeltaMovement(this.getDeltaMovement().add(0, f1 > 0 ? -0.3 : -0.6, 0));
+                    this.setDeltaMovement(this.getDeltaMovement().add(0, f1 > 0 ? -0.3 : -0.3, 0));
                 }
 
                 if (this.isControlledByLocalInstance()) {
