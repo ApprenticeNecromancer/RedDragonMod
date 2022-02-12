@@ -24,6 +24,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -325,7 +326,7 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
      */
     public boolean isOnGround() {
         BlockPos solidPos = new BlockPos(this.position().x, this.position().y - 3, this.position().z);
-        return level.getBlockState(solidPos).getMaterial().isSolid();
+        return !level.getBlockState(solidPos).isAir();
     }
 
     protected void doPlayerRide(Player pPlayer) {
@@ -388,7 +389,6 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         } else {
             this.setIsFlying(false);
         }
-
 //        System.out.println(this.isOnGround());
         this.setNoGravity(this.isFlying());
 
@@ -406,7 +406,7 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
 
                 this.setYRot(pilot.getYRot());
                 this.yRotO = this.getYRot();
-//                this.setXRot(pilot.getXRot() * 0.5F);
+                this.setXRot(pilot.getXRot() * 0.5F);
                 if (isFlying()) {
                     this.setXRot(pilot.getXRot() * 0.5F);
                 } else {

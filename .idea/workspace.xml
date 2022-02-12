@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c774920-6124-4e03-b0e7-d64051c474a8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/reddragon/textures/model/entity/dragon-b.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/checksums/sha1-checksums.bin" afterDir="false" />
@@ -15,15 +16,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/RedDragonMod.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/RedDragonMod.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/RedDragonMod.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/RedDragonMod.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/theycallmeapp/reddragon/client/ClientModEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/theycallmeapp/reddragon/client/ClientModEvent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/theycallmeapp/reddragon/common/entity/RedDragonEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/theycallmeapp/reddragon/common/entity/RedDragonEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classpath/runClient_minecraftClasspath.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classpath/runClient_minecraftClasspath.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classpath/runData_minecraftClasspath.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classpath/runData_minecraftClasspath.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classpath/runServer_minecraftClasspath.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classpath/runServer_minecraftClasspath.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/logs/debug-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug-1.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/logs/debug-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug-2.log.gz" afterDir="false" />
@@ -34,23 +28,16 @@
       <change beforePath="$PROJECT_DIR$/run/logs/latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/latest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/DIM-1/data/raids.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/DIM-1/data/raids.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/DIM1/data/raids_end.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/DIM1/data/raids_end.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/advancements/380df991-f603-344c-a090-369bad2a924a.json" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/advancements/380df991-f603-344c-a090-369bad2a924a.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/data/raids.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/data/raids.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.-1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.-1.-1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.-1.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.-1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.-1.1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.0.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.0.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.0.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.0.-2.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.0.0.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.0.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.0.1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.0.2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.0.2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.1.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.1.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.1.-2.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.1.0.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.1.1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.1.2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.1.2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.2.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.2.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.2.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.2.-2.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.2.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.2.0.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.2.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.2.1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.2.2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/entities/r.2.2.mca" afterDir="false" />
@@ -59,37 +46,24 @@
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.0.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.1.-1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.1.1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.1.2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.1.2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.2.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.2.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.2.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.2.-2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.2.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.2.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.2.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.2.1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.2.2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/poi/r.2.2.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.-1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.-1.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.-1.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.-1.-2.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.-1.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.-1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.-1.1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.0.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.0.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.0.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.0.-2.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.0.0.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.0.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.0.1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.0.2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.0.2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.1.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.1.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.1.-2.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.1.0.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.1.1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.1.2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.1.2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.2.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.2.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.2.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.2.-2.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.2.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.2.0.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.2.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.2.1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/region/r.2.2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/region/r.2.2.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/session.lock" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/session.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World (4)/stats/380df991-f603-344c-a090-369bad2a924a.json" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World (4)/stats/380df991-f603-344c-a090-369bad2a924a.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/usercache.json" beforeDir="false" afterPath="$PROJECT_DIR$/run/usercache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/client/ClientModEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/client/ClientModEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/client/event/DragonCameraEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/client/event/DragonCameraEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/common/entity/RedDragonEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/common/entity/RedDragonEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -223,33 +197,38 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/common/entity/RedDragonEntity.java</url>
-          <line>89</line>
+          <line>90</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/common/entity/RedDragonEntity.java</url>
-          <line>54</line>
+          <line>55</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/common/entity/RedDragonEntity.java</url>
-          <line>386</line>
+          <line>387</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/common/entity/RedDragonEntity.java</url>
-          <line>388</line>
+          <line>389</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/common/entity/RedDragonEntity.java</url>
-          <line>385</line>
+          <line>386</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/common/entity/RedDragonEntity.java</url>
           <line>410</line>
           <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/client/event/DragonCameraEvent.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/networking/message/ControlMessage.java</url>
@@ -259,7 +238,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/theycallmeapp/reddragon/common/entity/RedDragonEntity.java</url>
-          <line>325</line>
+          <line>326</line>
           <properties class="com.theycallmeapp.reddragon.common.entity.RedDragonEntity" method="isOnGround">
             <option name="EMULATED" value="true" />
           </properties>

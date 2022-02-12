@@ -3,6 +3,7 @@ package com.theycallmeapp.reddragon.client.event;
 import com.mojang.math.Vector3f;
 import com.theycallmeapp.reddragon.common.entity.RedDragonEntity;
 import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
@@ -13,6 +14,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import software.bernie.shadowed.eliotlash.mclib.math.functions.limit.Min;
 
 public class DragonCameraEvent {
 
@@ -37,24 +39,21 @@ public class DragonCameraEvent {
                 }
             }
         }
-
         return pStartingDistance;
     }
-
 
     @SubscribeEvent
     public static void Camera(EntityViewRenderEvent.CameraSetup cameraSetup) {
         Player player = (Player) cameraSetup.getCamera().getEntity();
+        Minecraft mc = Minecraft.getInstance();
         if (player.getVehicle() instanceof RedDragonEntity) {
             RedDragonEntity dragon = (RedDragonEntity) player.getVehicle();
             if (cameraSetup.getCamera().isDetached()) {
-                cameraSetup.getCamera().move(-getMaxZoom(5, player.position(), player.level, cameraSetup.getCamera().getLookVector(), player), 0, 0);
+                cameraSetup.getCamera().move(-getMaxZoom(mc.options.getCameraType().isMirrored() ? 2 : 2,
+                                player.position(), player.level,
+                                cameraSetup.getCamera().getLookVector(), player),
+                        0, 0);
             }
         }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public class CustomCamera extends Camera {
-
     }
 }
