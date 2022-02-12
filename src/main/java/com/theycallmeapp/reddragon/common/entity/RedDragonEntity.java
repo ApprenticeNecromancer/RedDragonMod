@@ -48,33 +48,40 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
     private static final EntityDataAccessor<Boolean> IS_FLYING = SynchedEntityData.defineId(RedDragonEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_JUMPING = SynchedEntityData.defineId(RedDragonEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_GOINDOWN = SynchedEntityData.defineId(RedDragonEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_HOVERING = SynchedEntityData.defineId(RedDragonEntity.class, EntityDataSerializers.BOOLEAN);
 
     AnimationFactory factory = new AnimationFactory(this);
     Player pilot;
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if (isFlying()) {
-            if (this.xRotO < -20 || isJumping()) {
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.flyup", true));
-                return PlayState.CONTINUE;
-            }
-            if (this.xRotO < 0 && this.xRotO > -20 || isJumping()) {
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.fly", true));
-                return PlayState.CONTINUE;
-            }
-            if (this.xRotO > 0 && this.xRotO < 20) {
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.glide", true));
-                return PlayState.CONTINUE;
-            }
-            if (this.xRotO > 15 && this.xRotO < 30) {
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.glidedown", true));
-                return PlayState.CONTINUE;
-            }
-            if (this.xRotO > 30) {
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.dive", true));
-                return PlayState.CONTINUE;
-            }
+
+        if (isFlying() && isHovering()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.hover", true));
+            return PlayState.CONTINUE;
         }
+        if (isFlying() && !isHovering()) {
+                if (this.xRotO < -20 || isJumping()) {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.flyup", true));
+                    return PlayState.CONTINUE;
+                }
+                if (this.xRotO < 0 && this.xRotO > -20) {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.fly", true));
+                    return PlayState.CONTINUE;
+                }
+                if (this.xRotO > 0 && this.xRotO < 20) {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.glide", true));
+                    return PlayState.CONTINUE;
+                }
+                if (this.xRotO > 15 && this.xRotO < 30) {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.glidedown", true));
+                    return PlayState.CONTINUE;
+                }
+                if (this.xRotO > 30) {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.dive", true));
+                    return PlayState.CONTINUE;
+                }
+        }
+
         if (this.isInSittingPose()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.sit", true));
             return PlayState.CONTINUE;
@@ -89,6 +96,14 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
 
     private <E extends IAnimatable> PlayState predicate1(AnimationEvent<E> event) {
         if (isFlying()) {
+            if (isHovering() && isFlying()){
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rot0", true));
+                return PlayState.CONTINUE;
+            }
+            if (this.xRotO < -20 || isJumping()) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rotup", true));
+                return PlayState.CONTINUE;
+            }
             if (this.xRotO < 0 && this.xRotO > -20) {
                 event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rotmidup", true));
                 return PlayState.CONTINUE;
@@ -105,11 +120,8 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
                 event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rotdive2", true));
                 return PlayState.CONTINUE;
             }
-            if (this.xRotO < -20 || isJumping()) {
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rotup", true));
-                return PlayState.CONTINUE;
-            }
         }
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.Dragon.rot0", true));
         return PlayState.CONTINUE;
     }
 
@@ -189,6 +201,14 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         this.entityData.set(IS_GOINDOWN, goingdown);
     }
 
+    public boolean isHovering() {
+        return this.entityData.get(IS_HOVERING);
+    }
+
+    public void setIsHovering(boolean hovering) {
+        this.entityData.set(IS_GOINDOWN, hovering);
+    }
+
     public void setDragonOverlay(int pType) {
         this.entityData.set(DRAGON_OVERLAY, pType);
     }
@@ -200,6 +220,7 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         this.entityData.define(IS_FLYING, false);
         this.entityData.define(IS_JUMPING, false);
         this.entityData.define(IS_GOINDOWN, false);
+        this.entityData.define(IS_HOVERING, false);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
@@ -209,6 +230,7 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         pCompound.putBoolean("is_flying", this.isFlying());
         pCompound.putBoolean("is_jumping", this.isJumping());
         pCompound.putBoolean("is_goingdown", this.isGoingDown());
+        pCompound.putBoolean("is_hovering", this.isHovering());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
@@ -218,6 +240,7 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         this.setIsFlying(pCompound.getBoolean("is_flying"));
         this.setIsJumping(pCompound.getBoolean("is_jumping"));
         this.setIsGoingDown(pCompound.getBoolean("is_goingdown"));
+        this.setIsHovering(pCompound.getBoolean("is_hovering"));
     }
 
     //  Taming
@@ -225,11 +248,11 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         Item item = itemstack.getItem();
         if (this.level.isClientSide) {
-            boolean flag = this.isOwnedBy(pPlayer) || this.isTame() || itemstack.is(Items.BONE) && !this.isTame();
+            boolean flag = this.isOwnedBy(pPlayer) || this.isTame() || itemstack.is(Items.DIAMOND) && !this.isTame();
             return flag ? InteractionResult.CONSUME : InteractionResult.PASS;
         } else {
             if (this.isTame()) {
-                if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
+                if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth() && pPlayer.isCrouching()) {
                     if (!pPlayer.getAbilities().instabuild) {
                         itemstack.shrink(1);
                     }
@@ -243,7 +266,7 @@ public class RedDragonEntity extends TamableAnimal implements IAnimatable, Playe
 
                 else {
                     InteractionResult interactionresult = super.mobInteract(pPlayer, pHand);
-                    if ((!interactionresult.consumesAction() || this.isBaby()) && this.isOwnedBy(pPlayer)) {
+                    if ((!interactionresult.consumesAction() || this.isBaby()) && this.isOwnedBy(pPlayer) && pPlayer.isCrouching()) {
                         this.setOrderedToSit(!this.isOrderedToSit());
                         this.jumping = false;
                         this.navigation.stop();
